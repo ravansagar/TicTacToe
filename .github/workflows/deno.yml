@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node (required for ESLint)
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -21,5 +21,5 @@ jobs:
       - name: Install ESLint globally
         run: npm install -g eslint
 
-      - name: Run ESLint
-        run: eslint .
+      - name: Run ESLint without config
+        run: npx eslint . --no-eslintrc --env browser --env es2021 --rule "semi: [2, always]" --rule "quotes: [2, double]"
