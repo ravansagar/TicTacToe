@@ -1,4 +1,4 @@
-name: Lint
+name: Lint JS
 
 on:
   push:
@@ -13,13 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node (required for ESLint)
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install ESLint globally
+        run: npm install -g eslint
 
       - name: Run ESLint
-        run: npx eslint .
+        run: eslint .
